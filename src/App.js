@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import getName from './example';
 
 const query = `
   films {
@@ -35,6 +36,7 @@ const App = () => {
   };
 
   useEffect(() => {
+    getName();
     getFilms(query);
   }, []);
 
