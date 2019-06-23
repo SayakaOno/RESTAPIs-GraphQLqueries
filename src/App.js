@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const query = `
-query {
-  title
-  description
+  films {
+    title
+    description
+  }
 }
 `;
 
@@ -13,7 +14,9 @@ const App = () => {
 
   const getFilms = async query => {
     try {
-      const response = await axios('https://ghibliapi.herokuapp.com/films');
+      const response = await axios('https://ghibliapi.herokuapp.com/films', {
+        query
+      });
       console.log(response.data);
       setData(response.data);
     } catch (err) {
