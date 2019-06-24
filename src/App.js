@@ -27,7 +27,7 @@ const App = () => {
 
   useEffect(() => {
     getFilms();
-    getFilmsWithAxios();
+    // getFilmsWithAxios();
   }, []);
 
   return <div className="App">{renderList(data)}</div>;

@@ -12,7 +12,7 @@ const client = new ApolloClient({
   cache: new InMemoryCache()
 });
 
-const query = gql`
+const filmsQuery = gql`
   query films {
     film @rest(type: "Film", path: "films") {
       id
@@ -21,9 +21,31 @@ const query = gql`
     }
   }
 `;
+
+const speciesQuery = gql`
+  query species {
+    species @rest(type: "Species", path: "species") {
+      name
+    }
+  }
+`;
+
+const peopleQuery = gql`
+  query people {
+    people @rest(type: "People", path: "people") {
+      name
+      species @rest(type: "Species", path: "species") {
+        name
+      }
+      films
+    }
+  }
+`;
+
 export default () => {
-  client.query({ query }).then(response => {
-    response.data.film.forEach(film => console.log(film.title));
+  client.query({ query: peopleQuery }).then(response => {
+    // response.data.film.forEach(film => console.log(film.title));
+    response.data.people.forEach(person => console.log(person.name));
     console.log(response.data);
   });
 };
