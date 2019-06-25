@@ -3,9 +3,11 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { RestLink } from 'apollo-link-rest';
 import gql from 'graphql-tag';
 
+const uri = 'https://ghibliapi.herokuapp.com/';
+
 // setup your `RestLink` with your endpoint
 const restLink = new RestLink({
-  uri: 'https://ghibliapi.herokuapp.com/'
+  uri
 });
 
 // setup your client
@@ -31,7 +33,7 @@ const filmsQuery = gql`
 const getSpeciesPath = data => {
   let path = data.exportVariables.url;
   path = typeof path === 'object' ? path[0] : path;
-  return path.replace('https://ghibliapi.herokuapp.com/', '');
+  return path.replace(uri, '');
 };
 
 const peopleQuery = gql`
