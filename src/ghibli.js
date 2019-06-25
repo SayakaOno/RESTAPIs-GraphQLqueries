@@ -2,11 +2,13 @@ import { ApolloClient } from 'apollo-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { RestLink } from 'apollo-link-rest';
 import gql from 'graphql-tag';
+import { googleApi } from './config';
 
 const uri = 'https://ghibliapi.herokuapp.com/';
 
 // setup your `RestLink` with your endpoint
 const restLink = new RestLink({
+  endpoints: { google: googleApi },
   uri
 });
 
@@ -38,8 +40,8 @@ const getSpeciesPath = data => {
 
 const peopleQuery = gql`
   query people($pathBuilder: any) {
-    people @rest(type: "People", path: "people") {
-      name
+    people(first: 1, offset: 1) @rest(type: "People", path: "people") {
+      name @export(as: "name")
       species @export(as: "url")
       species2 @rest(pathBuilder: $pathBuilder, type: "Species2") {
         classification
@@ -47,9 +49,12 @@ const peopleQuery = gql`
       }
       films @export(as: "url")
       film @rest(pathBuilder: $pathBuilder, type: "Film") {
-        title
+        title @export(as: "title")
         release_date
       }
+      # image @rest(path: "q=dog", type: "Image", endpoint: "google") {
+      #   items(first: 1)
+      # }
     }
   }
 `;
