@@ -1,6 +1,7 @@
 import React from 'react';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
+import './App.css';
 
 const uri = 'https://ghibliapi.herokuapp.com/';
 
@@ -24,15 +25,19 @@ const peopleQuery = gql`
         title @export(as: "title")
         release_date
       }
-      # image @rest(path: "q=dog", type: "Image", endpoint: "google") {
-      #   items(first: 1)
-      # }
+      image
+        @rest(
+          path: "&q={exportVariables.name}+Ghibli"
+          type: "Image"
+          endpoint: "google"
+        ) {
+        items
+      }
     }
   }
 `;
 
 const Cards = props => {
-  console.log(props);
   return (
     <div className="ui link cards">
       {props.loading
@@ -46,6 +51,7 @@ const Cards = props => {
                 classification={person.species2.classification}
                 film={person.film.title}
                 date={person.film.release_date}
+                image={person.image.items[0].link}
               />
             );
           })}
@@ -57,7 +63,7 @@ const Card = props => {
   return (
     <div className="card">
       <div className="image">
-        {/* <img src="/images/avatar2/large/matthew.png" /> */}
+        <img src={props.image} />
       </div>
       <div className="content">
         <div className="header">{props.name}</div>
