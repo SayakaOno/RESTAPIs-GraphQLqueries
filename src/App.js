@@ -49,25 +49,15 @@ const App = () => {
     }
   };
 
-  const renderList = films => {
-    return (
-      <ul>
-        {films.map(film => {
-          return <li key={film.id}>{film.title}</li>;
-        })}
-      </ul>
-    );
-  };
-
   useEffect(() => {
     // getFilms();
     // getFilmsWithAxios();
   }, []);
 
   return (
-    <div className="App">
+    <div className="App ui container">
+      <h1>Ghibli</h1>
       <Cards />
-      {renderList(data)}
     </div>
   );
 };
