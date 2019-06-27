@@ -55,8 +55,8 @@ const App = () => {
   }, []);
 
   return (
-    <div className="App ui container">
-      <h1>Ghibli</h1>
+    <div className="app ui container">
+      <h1>Ghibli characters</h1>
       <Cards />
     </div>
   );

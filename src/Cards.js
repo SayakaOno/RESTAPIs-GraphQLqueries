@@ -27,7 +27,7 @@ const peopleQuery = gql`
       }
       image
         @rest(
-          path: "&q={exportVariables.name}+Ghibli"
+          path: "&q={exportVariables.name}+Ghibli+character"
           type: "Image"
           endpoint: "google"
         ) {
