@@ -11,7 +11,7 @@ A simple application that calls REST APIs inside a GraphQL query.<br/>
 		   
 ## Query Architecture
 
-     ─ people
+     ─ people (Studio Ghibli API)
          ├── name*1
          ├── species(URL*2)
          ├── species2(API call with URL*2)
