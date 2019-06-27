@@ -1,5 +1,5 @@
 # REST API with GraphQL
-Simple application that calls REST APIs inside a GraphQL query.<br/>
+A simple application that calls REST APIs inside a GraphQL query.<br/>
 (The API Key is not in this repository.)<br/>
 ![Ghibli](https://user-images.githubusercontent.com/33141219/60302968-12ff4800-98ea-11e9-81ce-f973da4e4683.png)
 
@@ -11,18 +11,18 @@ Simple application that calls REST APIs inside a GraphQL query.<br/>
 		   
 ## Query Architecture
 
-  ─ people<br />
-       ├── name\*1<br />
-       ├── species(URL\*2)<br />
-       ├── species2(API call with URL\*2)<br />
-       |    ├── name<br />
-       |    └── classification<br />
-       ├── films(URL\*3)<br />
-       ├── film(API call with URL\*3)<br />
-       |     ├── title<br />
-       |     └── release_date<br />
-       └── image (Google custom search with name\*1)<br />
-             └── items<br />
+     ─ people
+         ├── name*1
+         ├── species(URL*2)
+         ├── species2(API call with URL*2)
+         |    ├── name
+         |    └── classification
+         ├── films(URL*3)
+         ├── film(API call with URL*3)
+         |     ├── title
+         |     └── release_date
+         └── image (Google custom search with name*1)
+               └── items
 
 
 ## Specification
