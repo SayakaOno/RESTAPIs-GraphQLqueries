@@ -35,4 +35,4 @@ Main libraries:
 - graphql
 - graphql-tag<br />
 
-css: Semantic UI
+CSS: Semantic UI
