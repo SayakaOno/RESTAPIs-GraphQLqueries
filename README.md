@@ -15,8 +15,8 @@ A simple application that calls REST APIs inside a GraphQL query.<br/>
          ├── name*1
          ├── species(URL*2)
          ├── species2(API call with URL*2)
-         |    ├── name
-         |    └── classification
+         |     ├── name
+         |     └── classification
          ├── films(URL*3)
          ├── film(API call with URL*3)
          |     ├── title
@@ -35,4 +35,4 @@ Main libraries:
 - graphql
 - graphql-tag<br />
 
-css: Semantic UI
+CSS: Semantic UI
